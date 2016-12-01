@@ -22,9 +22,8 @@
     console.log('In constructor');
     this.emojis = emojis;
     this.emojiKeys = _.keys(emojis);
-    this.emojiChecks = this.emojiKeys.map((k) => ':' + k + ':');
+    this.emojiChecks = this.emojiKeys.map((k) => ':' + k + ':');m
     this.fb = false;
-    this.acceptingInput = false;
     this.target = null;
 
     this.init = function() {
@@ -45,11 +44,10 @@
     }
 
     if (e.target.classList.contains('_5rpu')) {
+      this.fb = true;
       console.log('we facebook now boys')
-
       var span = $(e.target).find('span[data-text="true"]')[0];
       this.target = span;
-      this.fb = true;
     }
   };
 
@@ -73,7 +71,7 @@
       console.log(self.target);
 
       self.setTarget(e);
-      if (e.key !== ':' && self.inEmojiMode) {
+      if (e.key !== ':' && !self.inEmojiMode) {
         return;
       };
 
